@@ -41,10 +41,10 @@ if __name__ == '__main__':
     input_image = image.imread(r"images/image1.png")
     Approximation, (Horizontal_Segment, Vertical_segment, Diagonal_segment) = pywtconversion.convert_to_pywtcoff(input_image)
     #print(Approximation)
-    encrypted_approximation = encrypt_using_rsa(Approximation)
-    decrypted_approximation = decrypt_using_rsa(encrypted_approximation)
+    encrypted_approximation = encrypt_using_aes(Approximation)
+    decrypted_approximation = decrypt_using_aes(encrypted_approximation)
     #print(len(encrypted_approximation))
-
+    restored_image = pywtconversion.restore_orignal_image(decrypted_approximation, Horizontal_Segment, Vertical_segment, Diagonal_segment)
     print(constants.RESHAPE)
     print(constants.SHAPE)
 
